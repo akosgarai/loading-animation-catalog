@@ -1,0 +1,14 @@
+{
+  "name": "loading-animations",
+  "version": "0.0.1",
+  "description": "Loading animation examples.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^8.0.0"
+  }
+}
