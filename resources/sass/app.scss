@@ -126,6 +126,8 @@
 					padding-top: calc(var(--baseline) * 4);
 
 					@import 'loader/tesseract';
+					@import 'loader/infinite';
+					@import 'loader/ripples';
 				}
 			}
 		}

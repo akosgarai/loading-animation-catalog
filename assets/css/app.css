@@ -185,3 +185,76 @@ body {
     transform: translateX(50px) translateY(50px) rotateY(-90deg) rotateX(90deg); }
   100% {
     transform: translateX(50px) translateY(50px) rotateY(0deg) rotateX(90deg); } }
+          .cover .book .paper .page-content .loader-container .infinite {
+            width: 86px;
+            height: 50px;
+            border-radius: 50px;
+            background: radial-gradient(farthest-side, #0000 calc(100% - 10px), #bde9df calc(100% - 10px) 100%, #0000) left, radial-gradient(farthest-side, #0000 calc(100% - 10px), #bde9df calc(100% - 10px) 100%, #0000) right;
+            background-size: calc(50% + 5px) 100%;
+            background-repeat: no-repeat;
+            position: relative;
+            animation: flipX 1s infinite linear; }
+            .cover .book .paper .page-content .loader-container .infinite:before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              margin: auto;
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background: #015477;
+              transform-origin: -14px 50%;
+              animation: rotate 0.5s infinite linear; }
+
+@keyframes flipX {
+  0%, 49.99% {
+    transform: scaleX(1); }
+  50%, 100% {
+    transform: scaleX(-1); } }
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg); } }
+          .cover .book .paper .page-content .loader-container .ripples {
+            display: inline-block;
+            position: relative;
+            width: 160px;
+            height: 160px; }
+            .cover .book .paper .page-content .loader-container .ripples div {
+              position: absolute;
+              border: 4px solid #015477;
+              opacity: 1;
+              border-radius: 50%;
+              animation: ripples 2s cubic-bezier(0, 0.2, 0.8, 1) infinite; }
+              .cover .book .paper .page-content .loader-container .ripples div:nth-child(2) {
+                animation-delay: -0.5s; }
+              .cover .book .paper .page-content .loader-container .ripples div:nth-child(3) {
+                animation-delay: -1s; }
+              .cover .book .paper .page-content .loader-container .ripples div:nth-child(4) {
+                animation-delay: -1.5s; }
+
+@keyframes ripples {
+  0% {
+    top: 72px;
+    left: 72px;
+    width: 0;
+    height: 0;
+    opacity: 0; }
+  4.9% {
+    top: 72px;
+    left: 72px;
+    width: 0;
+    height: 0;
+    opacity: 0; }
+  5% {
+    top: 72px;
+    left: 72px;
+    width: 0;
+    height: 0;
+    opacity: 1; }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 144px;
+    height: 144px;
+    opacity: 0; } }
