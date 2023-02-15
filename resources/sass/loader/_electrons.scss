@@ -4,7 +4,7 @@
 	border-radius: 50%;
 	width: 48px;
 	height: 48px;
-	color: #015477;
+	color: var(--loader-electron-one);
 
 	&:before,
 	&:after {
@@ -20,7 +20,7 @@
 		animation: 1s electrons linear infinite;
 	}
 	&:after {
-		color: #FF3D00;
+		color: var(--loader-electron-two);
 		transform: rotateY(70deg);
 		animation-delay: .4s;
 	}

@@ -74,7 +74,23 @@ var pageContent = [
 			},
 		]
 	},
-	{ 'name': 'electrons', 'label': 'Electrons', 'template': 'electrons' },
+	{
+		'name': 'electrons',
+		'label': 'Electrons',
+		'template': 'electrons',
+		'settings': [
+			{
+				'variable': '--loader-electron-one',
+				'label': 'Electron one',
+				'type': 'color',
+			},
+			{
+				'variable': '--loader-electron-two',
+				'label': 'Electron two',
+				'type': 'color',
+			},
+		]
+	},
 ];
 
 // It creates the pages, adds the page numbers and also adds it to the table of contents.
