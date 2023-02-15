@@ -1,7 +1,33 @@
 // The configuration for the flipbook pages.
 // each has a name, label, a template id.
 var pageContent = [
-	{ 'name': 'tesseract', 'label': 'Tesseract', 'template': 'tesseract' },
+	{
+		'name': 'tesseract',
+		'label': 'Tesseract',
+		'template': 'tesseract',
+		'settings': [
+			{
+				'variable': '--loader-tesseract-occ',
+				'label': 'Outer cube color',
+				'type': 'color',
+			},
+			{
+				'variable': '--loader-tesseract-ocb',
+				'label': 'Outer cube border',
+				'type': 'color',
+			},
+			{
+				'variable': '--loader-tesseract-ocsc',
+				'label': 'Outer cube shadow',
+				'type': 'color',
+			},
+			{
+				'variable': '--loader-tesseract-icc',
+				'label': 'Inner cube color',
+				'type': 'color',
+			},
+		]
+	},
 	{
 		'name': 'infinite',
 		'label': 'Infinite',
