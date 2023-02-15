@@ -57,7 +57,23 @@ var pageContent = [
 			},
 		]
 	},
-	{ 'name': 'clock', 'label': 'Clock', 'template': 'clock' },
+	{
+		'name': 'clock',
+		'label': 'Clock',
+		'template': 'clock',
+		'settings': [
+			{
+				'variable': '--loader-clock-cbc',
+				'label': 'Clock color',
+				'type': 'color',
+			},
+			{
+				'variable': '--loader-clock-pbc',
+				'label': 'Pointer color',
+				'type': 'color',
+			},
+		]
+	},
 	{ 'name': 'electrons', 'label': 'Electrons', 'template': 'electrons' },
 ];
 
