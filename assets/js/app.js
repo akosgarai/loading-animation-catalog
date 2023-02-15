@@ -35,8 +35,10 @@ function buildFlipbook() {
 		// setup the first page. Only the page number has to be shown.
 		const pageNumber = document.querySelectorAll('.book .paper').length ;
 		paper.querySelector('.front .page-number span').textContent = pageNumber * 2 + 1;
+		paper.querySelector('.front .page-number div').setAttribute('onclick', "flip(" + pageNumber + ")");
 		// setup the back page. The page number and the page label has to be shown.
 		paper.querySelector('.back .page-number span').textContent = pageNumber * 2 + 2;
+		paper.querySelector('.back .page-number div').setAttribute('onclick', "flip(" + pageNumber + ")");
 		// add the page label and the animation template to the back page.
 		paper.querySelector('.back .page-content h3.title.paragraph').textContent = pageConfig.label;
 		paper.querySelector('.back .page-content .loader-container').appendChild(page.content.firstElementChild.cloneNode(true));
@@ -73,7 +75,8 @@ function buildFlipbook() {
 	});
 }
 
-function flip(element) {
+function flip(elementIndex) {
+	const element = document.querySelectorAll('.book .paper')[elementIndex];
 	// determine the direction of the flip
 	let direction = element.classList.contains("last-flipped") ? "back" : "front";
 	// If the element is already flipped, flip it back

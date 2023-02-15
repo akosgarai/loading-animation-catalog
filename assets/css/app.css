@@ -103,6 +103,22 @@ body {
           justify-content: space-between; }
         .cover .book .paper .page-content .page-number {
           margin-top: auto; }
+          .cover .book .paper .page-content .page-number .arrow-right {
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid blue;
+            display: inline-block;
+            float: right; }
+          .cover .book .paper .page-content .page-number .arrow-left {
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid blue;
+            display: inline-block;
+            float: left; }
         .cover .book .paper .page-content .loader-container {
           display: flex;
           justify-content: center;

@@ -6,10 +6,13 @@
 	</head>
 	<body>
 		<template id="paper-template">
-			<div class="paper" onclick="flip(this)">
+			<div class="paper">
 				<div class="front">
 					<div class="page-content">
-						<div class="page-number"><span></span></div>
+						<div class="page-number">
+							<span></span>
+							<div class="arrow-right" onclick="flip(index)"></div>
+						</div>
 					</div>
 				</div>
 				<div class="back">
@@ -19,7 +22,10 @@
 						</div>
 						<div class="loader-container">
 						</div>
-						<div class="page-number"><span></span></div>
+						<div class="page-number">
+							<div class="arrow-left" onclick="flip(index)"></div>
+							<span></span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -83,7 +89,7 @@
 		</template>
 		<div class="cover">
 			<div class="book">
-				<div class="paper first-not-flipped" onclick="flip(this)">
+				<div class="paper first-not-flipped" onclick="flip(0)">
 					<div class="front">
 						<div class="page-content">
 							<div>
@@ -104,7 +110,10 @@
 							</div>
 							<div class="table-of-contents">
 							</div>
-							<div class="page-number"><span>2</span></div>
+							<div class="page-number">
+								<div class="arrow-left"></div>
+								<span>2</span>
+							</div>
 						</div>
 					</div>
 				</div>
