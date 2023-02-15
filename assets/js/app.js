@@ -54,6 +54,8 @@ function buildFlipbook() {
 	const paper = document.getElementById('paper-template').content.firstElementChild.cloneNode(true);
 	const pageNumber = document.querySelectorAll('.book .paper').length ;
 	paper.querySelector('.front .page-number span').textContent = pageNumber * 2 + 1;
+	paper.querySelector('.front .page-number div').setAttribute('onclick', "flip(" + pageNumber + ")");
+	paper.querySelector('.back .page-number div').setAttribute('onclick', "flip(" + pageNumber + ")");
 	book.appendChild(paper);
 	// now the pages are set, so we loop through the pageContent array again
 	// and add the setting form to the front page when it is available.
