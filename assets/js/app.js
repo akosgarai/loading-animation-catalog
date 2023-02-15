@@ -134,6 +134,7 @@ function buildFlipbook() {
 			return;
 		}
 		const paper = papers[index+2];
+		paper.querySelector('.hidden').classList.remove('hidden');
 		pageConfig.settings.forEach((setting) => {
 			const settingsItemTemplate = document.getElementById('settings-item-template').content.firstElementChild.cloneNode(true);
 			settingsItemTemplate.querySelector('.label').textContent = setting.label;
@@ -141,7 +142,7 @@ function buildFlipbook() {
 			settingsItemTemplate.querySelector('input').setAttribute('data-variable', setting.variable);
 			const settingVariableValue = getComputedStyle(paper).getPropertyValue(setting.variable);
 			settingsItemTemplate.querySelector('input').setAttribute('value', settingVariableValue.trim());
-			paper.querySelector('.front .page-content').prepend(settingsItemTemplate);
+			paper.querySelector('.front .page-content .settings').appendChild(settingsItemTemplate);
 		});
 	});
 }
