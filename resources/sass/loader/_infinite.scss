@@ -3,8 +3,8 @@
 	height: 50px;
 	border-radius: 50px;
 	background:
-	radial-gradient(farthest-side,#0000 calc(100% - 10px),#bde9df calc(100% - 10px) 100%,#0000) left,
-	radial-gradient(farthest-side,#0000 calc(100% - 10px),#bde9df calc(100% - 10px) 100%,#0000) right;
+		radial-gradient(farthest-side,#0000 calc(100% - 10px), var(--loader-infinite-bg) calc(100% - 10px) 100%,#0000) left,
+		radial-gradient(farthest-side,#0000 calc(100% - 10px), var(--loader-infinite-bg) calc(100% - 10px) 100%,#0000) right;
 	background-size: calc(50% + 5px) 100%;
 	background-repeat: no-repeat;
 	position: relative;
@@ -13,12 +13,12 @@
 	&:before {
 		content: "";
 		position: absolute;
-		inset:0;
-		margin:auto;
-		width:10px;
+		inset: 0;
+		margin: auto;
+		width: 10px;
 		height: 10px;
 		border-radius: 50%;
-		background:#015477;
+		background: var(--loader-infinite-fg);
 		transform-origin: -14px 50%;
 		animation: rotate 0.5s infinite linear;
 	}
