@@ -45,7 +45,18 @@ var pageContent = [
 			},
 		]
 	},
-	{ 'name': 'ripples', 'label': 'Ripples', 'template': 'ripples' },
+	{
+		'name': 'ripples',
+		'label': 'Ripples',
+		'template': 'ripples',
+		'settings': [
+			{
+				'variable': '--loader-ripples-bc',
+				'label': 'Border color',
+				'type': 'color',
+			},
+		]
+	},
 	{ 'name': 'clock', 'label': 'Clock', 'template': 'clock' },
 	{ 'name': 'electrons', 'label': 'Electrons', 'template': 'electrons' },
 ];
