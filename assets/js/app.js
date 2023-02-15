@@ -130,10 +130,27 @@ function buildFlipbook() {
 	// and add the setting form to the front page when it is available.
 	const papers = document.querySelectorAll('.book .paper');
 	pageContent.forEach((pageConfig, index) => {
+		// extract the html from the template and display it as string in the html tab.
+		const page = document.getElementById(pageConfig.template + '-template');
+		const paper = papers[index+2];
+		const pre = document.createElement('pre');
+		let htmlText = page.content.firstElementChild.cloneNode(true).outerHTML;
+		const lines = htmlText.split('\n');
+		const numberOfTabsInTheLastLine = lines[lines.length - 1].split('\t').length - 1;
+		// remove numberOfTabsInTheLastLine tabs from the beginning of each line that starts with a tab.
+		htmlText = lines.map(line => {
+			// if the line starts with numberOfTabsInTheLastLine tabs, remove them.
+			if (line.startsWith('\t'.repeat(numberOfTabsInTheLastLine))) {
+				return line.substring(numberOfTabsInTheLastLine);
+			}
+			return line;
+		}).join('\n');
+		pre.textContent = htmlText;
+		paper.querySelector('.front .page-content .tab-contents .html').innerHTML = '';
+		paper.querySelector('.front .page-content .tab-contents .html').appendChild(pre);
 		if (typeof pageConfig.settings == 'undefined') {
 			return;
 		}
-		const paper = papers[index+2];
 		paper.querySelector('.hidden').classList.remove('hidden');
 		pageConfig.settings.forEach((setting) => {
 			const settingsItemTemplate = document.getElementById('settings-item-template').content.firstElementChild.cloneNode(true);

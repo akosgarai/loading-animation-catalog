@@ -385,3 +385,17 @@ body {
               justify-content: space-between; }
         .cover .book .paper .page-content .hidden {
           display: none; }
+        .cover .book .paper .page-content .tabs {
+          display: flex;
+          justify-content: space-evenly;
+          padding-bottom: calc(var(--baseline) * 2); }
+          .cover .book .paper .page-content .tabs .active-tab {
+            border-bottom: 2px solid var(--dark-text);
+            font-weight: bold; }
+          .cover .book .paper .page-content .tabs > div {
+            cursor: pointer; }
+        .cover .book .paper .page-content .html {
+          text-align: left;
+          tab-size: 2;
+          padding: 0 calc(var(--baseline) * 2);
+          background-color: var(--body-bg); }
