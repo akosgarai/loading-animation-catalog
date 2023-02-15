@@ -73,6 +73,14 @@
 				<div class="page-number"></div>
 			</div>
 		</template>
+		<template id="settings-item-template">
+			<div class="settings-item">
+				<label>
+					<span class="label"></span>
+					<input type="" value="" data-variable="" onchange="document.querySelector(':root').style.setProperty(this.getAttribute('data-variable'), this.value)">
+				</label>
+			</div>
+		</template>
 		<div class="cover">
 			<div class="book">
 				<div class="paper first-not-flipped" onclick="flip(this)">

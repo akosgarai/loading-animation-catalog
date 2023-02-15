@@ -2,7 +2,23 @@
 // each has a name, label, a template id.
 var pageContent = [
 	{ 'name': 'tesseract', 'label': 'Tesseract', 'template': 'tesseract' },
-	{ 'name': 'infinite', 'label': 'Infinite', 'template': 'infinite' },
+	{
+		'name': 'infinite',
+		'label': 'Infinite',
+		'template': 'infinite' ,
+		'settings': [
+			{
+				'variable': '--loader-infinite-bg',
+				'label': 'Background color',
+				'type': 'color',
+			},
+			{
+				'variable': '--loader-infinite-fg',
+				'label': 'Foreground color',
+				'type': 'color',
+			},
+		]
+	},
 	{ 'name': 'ripples', 'label': 'Ripples', 'template': 'ripples' },
 	{ 'name': 'clock', 'label': 'Clock', 'template': 'clock' },
 	{ 'name': 'electrons', 'label': 'Electrons', 'template': 'electrons' },
@@ -10,6 +26,9 @@ var pageContent = [
 
 // It creates the pages, adds the page numbers and also adds it to the table of contents.
 function buildFlipbook() {
+	const book = document.querySelector('.book');
+	const tableOfContents = document.querySelector('.cover .book .paper .back .table-of-contents');
+
 	pageContent.forEach((pageConfig, index) => {
 		const paper = document.getElementById('paper-template').content.firstElementChild.cloneNode(true);
 		const page = document.getElementById(pageConfig.template + '-template');
@@ -21,14 +40,36 @@ function buildFlipbook() {
 		// add the page label and the animation template to the back page.
 		paper.querySelector('.back .page-content h3.title.paragraph').textContent = pageConfig.label;
 		paper.querySelector('.back .page-content .loader-container').appendChild(page.content.firstElementChild.cloneNode(true));
-		const book = document.querySelector('.book');
 		book.appendChild(paper);
 		// add the table of contents entry
-		const tableOfContents = document.querySelector('.cover .book .paper .back .table-of-contents');
 		const tableOfContentsEntry = document.getElementById('toc-item-template').content.firstElementChild.cloneNode(true);
 		tableOfContentsEntry.querySelector('.chapter-name').textContent = (index + 1) + ' ' + pageConfig.label;
 		tableOfContentsEntry.querySelector('.page-number').textContent = pageNumber * 2 + 2;
 		tableOfContents.appendChild(tableOfContentsEntry);
+	});
+	// Add one more page to the flipbook. This page is the last page of the flipbook.
+	// the page number only has to be set on the front page.
+	const paper = document.getElementById('paper-template').content.firstElementChild.cloneNode(true);
+	const pageNumber = document.querySelectorAll('.book .paper').length ;
+	paper.querySelector('.front .page-number span').textContent = pageNumber * 2 + 1;
+	book.appendChild(paper);
+	// now the pages are set, so we loop through the pageContent array again
+	// and add the setting form to the front page when it is available.
+	const papers = document.querySelectorAll('.book .paper');
+	pageContent.forEach((pageConfig, index) => {
+		if (typeof pageConfig.settings == 'undefined') {
+			return;
+		}
+		const paper = papers[index+2];
+		pageConfig.settings.forEach((setting) => {
+			const settingsItemTemplate = document.getElementById('settings-item-template').content.firstElementChild.cloneNode(true);
+			settingsItemTemplate.querySelector('.label').textContent = setting.label;
+			settingsItemTemplate.querySelector('input').setAttribute('type', setting.type);
+			settingsItemTemplate.querySelector('input').setAttribute('data-variable', setting.variable);
+			const settingVariableValue = getComputedStyle(paper).getPropertyValue(setting.variable);
+			settingsItemTemplate.querySelector('input').setAttribute('value', settingVariableValue.trim());
+			paper.querySelector('.front .page-content').prepend(settingsItemTemplate);
+		});
 	});
 }
 
