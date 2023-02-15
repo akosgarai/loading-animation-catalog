@@ -5,6 +5,74 @@
 		<script src="assets/js/app.js"></script>
 	</head>
 	<body>
+		<template id="paper-template">
+			<div class="paper" onclick="flip(this)">
+				<div class="front">
+					<div class="page-content">
+						<div class="page-number"><span></span></div>
+					</div>
+				</div>
+				<div class="back">
+					<div class="page-content">
+						<div>
+							<h3 class="title paragraph"></h3>
+						</div>
+						<div class="loader-container">
+						</div>
+						<div class="page-number"><span></span></div>
+					</div>
+				</div>
+			</div>
+		</template>
+		<template id="tesseract-template">
+			<div class="tesseract">
+				<div class="shape">
+					<div class="cube outer">
+						<div class="side left"></div>
+						<div class="side right"></div>
+						<div class="side top"></div>
+						<div class="side bottom"></div>
+						<div class="side front"></div>
+						<div class="side back"></div>
+
+						<div class="cube">
+							<div class="side left"></div>
+							<div class="side right"></div>
+							<div class="side top"></div>
+							<div class="side bottom"></div>
+							<div class="side front"></div>
+							<div class="side back"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</template>
+		<template id="infinite-template">
+			<div class="infinite"></div>
+		</template>
+		<template id="ripples-template">
+			<div class="ripples">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</template>
+		<template id="clock-template">
+			<div class="clock">
+				<div class="hour"><div></div></div>
+				<div class="minute"><div></div></div>
+			</div>
+		</template>
+		<template id="electrons-template">
+			<div class="electrons"></div>
+		</template>
+		<template id="toc-item-template">
+			<div class="content-item">
+				<div class="chapter-name"></div>
+				<div class="page-number"></div>
+			</div>
+		</template>
 		<div class="cover">
 			<div class="book">
 				<div class="paper first-not-flipped" onclick="flip(this)">
@@ -27,146 +95,8 @@
 								<h3 class="title paragraph">Contents</h3>
 							</div>
 							<div class="table-of-contents">
-								<div class="content-item">
-									<div>1. Tesseract</div>
-									<div>4</div>
-								</div>
-								<div class="content-item">
-									<div>2. Infinite</div>
-									<div>6</div>
-								</div>
-								<div class="content-item">
-									<div>3. Ripples</div>
-									<div>8</div>
-								</div>
-								<div class="content-item">
-									<div>4. Clock</div>
-									<div>10</div>
-								</div>
-								<div class="content-item">
-									<div>5. Electrons</div>
-									<div>12</div>
-								</div>
 							</div>
 							<div class="page-number"><span>2</span></div>
-						</div>
-					</div>
-				</div>
-				<div class="paper" onclick="flip(this)">
-					<div class="front">
-						<div class="page-content">
-							<div class="page-number"><span>3</span></div>
-						</div>
-					</div>
-					<div class="back">
-						<div class="page-content">
-							<div>
-								<h3 class="title paragraph">Tesseract</h3>
-							</div>
-							<div class="loader-container">
-								<div class="tesseract">
-									<div class="shape">
-										<div class="cube outer">
-											<div class="side left"></div>
-											<div class="side right"></div>
-											<div class="side top"></div>
-											<div class="side bottom"></div>
-											<div class="side front"></div>
-											<div class="side back"></div>
-
-											<div class="cube">
-												<div class="side left"></div>
-												<div class="side right"></div>
-												<div class="side top"></div>
-												<div class="side bottom"></div>
-												<div class="side front"></div>
-												<div class="side back"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="page-number"><span>4</span></div>
-						</div>
-					</div>
-				</div>
-				<div class="paper" onclick="flip(this)">
-					<div class="front">
-						<div class="page-content">
-							<div class="page-number"><span>5</span></div>
-						</div>
-					</div>
-					<div class="back">
-						<div class="page-content">
-							<div>
-								<h3 class="title paragraph">Inf</h3>
-							</div>
-							<div class="loader-container">
-								<div class="infinite"></div>
-							</div>
-							<div class="page-number"><span>6</span></div>
-						</div>
-					</div>
-				</div>
-				<div class="paper" onclick="flip(this)">
-					<div class="front">
-						<div class="page-content">
-							<div class="page-number"><span>7</span></div>
-						</div>
-					</div>
-					<div class="back">
-						<div class="page-content">
-							<div>
-								<h3 class="title paragraph">Ripples</h3>
-							</div>
-							<div class="loader-container">
-								<div class="ripples">
-									<div></div>
-									<div></div>
-									<div></div>
-									<div></div>
-								</div>
-							</div>
-							<div class="page-number"><span>8</span></div>
-						</div>
-					</div>
-				</div>
-				<div class="paper" onclick="flip(this)">
-					<div class="front">
-						<div class="page-content">
-							<div class="page-number"><span>9</span></div>
-						</div>
-					</div>
-					<div class="back">
-						<div class="page-content">
-							<div>
-								<h3 class="title paragraph">Clock</h3>
-							</div>
-							<div class="loader-container">
-								<div class="clock">
-									<div class="hour"><div></div></div>
-									<div class="minute"><div></div></div>
-								</div>
-							</div>
-							<div class="page-number"><span>10</span></div>
-						</div>
-					</div>
-				</div>
-				<div class="paper" onclick="flip(this)">
-					<div class="front">
-						<div class="page-content">
-							<div class="page-number"><span>11</span></div>
-						</div>
-					</div>
-					<div class="back">
-						<div class="page-content">
-							<div>
-								<h3 class="title paragraph">Electrons</h3>
-							</div>
-							<div class="loader-container">
-								<div class="electrons"></div>
-							</div>
-							<div class="page-number"><span>12</span></div>
 						</div>
 					</div>
 				</div>
