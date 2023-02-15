@@ -185,6 +185,21 @@ function flip(elementIndex) {
 	}
 }
 
+// Tab navigation. The element is the tab element, the screen name is the name of the screen to show.
+// First remove the active-tab class from all tabs and hide all screens.
+// Then add the active-tab class to the clicked tab and show the screen with the screen name.
+function showPageContent(element, screenName) {
+	element.parentElement.querySelectorAll('div').forEach((child) => {
+		child.classList.remove('active-tab');
+	});
+	element.classList.add('active-tab');
+	const pageNode = element.parentElement.parentElement.parentElement;
+	pageNode.querySelectorAll('.tab-contents > div').forEach((screen) => {
+		screen.classList.add('hidden');
+	});
+	pageNode.querySelector('.tab-contents div.' + screenName).classList.remove('hidden');
+}
+
 // Onload function. It builds the flipbook.
 window.onload = function() {
 	buildFlipbook();
