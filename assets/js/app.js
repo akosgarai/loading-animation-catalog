@@ -75,6 +75,21 @@ var pageContent = [
 				'label': 'Border color',
 				'type': 'color',
 			},
+			{
+				'variable': '--loader-ripples-length',
+				'label': 'Animation length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-ripples-size',
+				'label': 'Size',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-ripples-width',
+				'label': 'Wave width',
+				'type': 'text',
+			},
 		]
 	},
 	{

@@ -18,6 +18,9 @@
   --loader-tesseract-oop: 0.5;
   --loader-tesseract-iop: 0.25;
   --loader-ripples-bc: #015477;
+  --loader-ripples-length: 2s;
+  --loader-ripples-size: 160px;
+  --loader-ripples-width: 4px;
   --loader-clock-cbc: #015477;
   --loader-clock-pbc: #3DFF00;
   --loader-electron-one: #015477;
@@ -245,45 +248,45 @@ body {
           .cover .book .paper .page-content .loader-container .ripples {
             display: inline-block;
             position: relative;
-            width: 160px;
-            height: 160px; }
+            width: var(--loader-ripples-size);
+            height: var(--loader-ripples-size); }
             .cover .book .paper .page-content .loader-container .ripples div {
               position: absolute;
-              border: 4px solid var(--loader-ripples-bc);
+              border: var(--loader-ripples-width) solid var(--loader-ripples-bc);
               opacity: 1;
               border-radius: 50%;
-              animation: ripples 2s cubic-bezier(0, 0.2, 0.8, 1) infinite; }
+              animation: ripples var(--loader-ripples-length) cubic-bezier(0, 0.2, 0.8, 1) infinite; }
               .cover .book .paper .page-content .loader-container .ripples div:nth-child(2) {
-                animation-delay: -0.5s; }
+                animation-delay: calc(var(--loader-ripples-length) / -4); }
               .cover .book .paper .page-content .loader-container .ripples div:nth-child(3) {
-                animation-delay: -1s; }
+                animation-delay: calc(var(--loader-ripples-length) / -2); }
               .cover .book .paper .page-content .loader-container .ripples div:nth-child(4) {
-                animation-delay: -1.5s; }
+                animation-delay: calc(3 * var(--loader-ripples-length) / -4); }
 
 @keyframes ripples {
   0% {
-    top: 72px;
-    left: 72px;
+    top: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
+    left: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
     width: 0;
     height: 0;
     opacity: 0; }
   4.9% {
-    top: 72px;
-    left: 72px;
+    top: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
+    left: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
     width: 0;
     height: 0;
     opacity: 0; }
   5% {
-    top: 72px;
-    left: 72px;
+    top: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
+    left: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
     width: 0;
     height: 0;
     opacity: 1; }
   100% {
     top: 0px;
     left: 0px;
-    width: 144px;
-    height: 144px;
+    width: calc(var(--loader-ripples-size) - var(--loader-ripples-width) * 4);
+    height: calc(var(--loader-ripples-size) - var(--loader-ripples-width) * 4);
     opacity: 0; } }
           .cover .book .paper .page-content .loader-container .clock {
             width: 96px;
