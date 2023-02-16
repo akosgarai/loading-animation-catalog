@@ -107,6 +107,26 @@ var pageContent = [
 				'label': 'Pointer color',
 				'type': 'color',
 			},
+			{
+				'variable': '--loader-clock-minute-length',
+				'label': 'Minute length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-clock-hour-length',
+				'label': 'Hour length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-clock-size',
+				'label': 'Size',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-clock-bsize',
+				'label': 'Border size',
+				'type': 'text',
+			},
 		]
 	},
 	{
