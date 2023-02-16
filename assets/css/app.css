@@ -5,8 +5,10 @@
   --page-bg: #f5f5f5;
   --cover-bg: #ff0000;
   --dark-text: #2a2935;
+  /* loaders */
   --loader-infinite-bg: #bde9df;
   --loader-infinite-fg: #015477;
+  --loader-infinite-length: 1s;
   --loader-tesseract-occ: #65b8db;
   --loader-tesseract-ocb: #015477;
   --loader-tesseract-ocsc: #01547780;
@@ -218,7 +220,7 @@ body {
             background-size: calc(50% + 5px) 100%;
             background-repeat: no-repeat;
             position: relative;
-            animation: flipX 1s infinite linear; }
+            animation: flipX var(--loader-infinite-length) infinite linear; }
             .cover .book .paper .page-content .loader-container .infinite:before {
               content: "";
               position: absolute;
@@ -229,7 +231,7 @@ body {
               border-radius: 50%;
               background: var(--loader-infinite-fg);
               transform-origin: -14px 50%;
-              animation: rotate 0.5s infinite linear; }
+              animation: rotate calc(var(--loader-infinite-length) / 2) infinite linear; }
 
 @keyframes flipX {
   0%, 49.99% {

@@ -58,6 +58,11 @@ var pageContent = [
 				'label': 'Foreground color',
 				'type': 'color',
 			},
+			{
+				'variable': '--loader-infinite-length',
+				'label': 'Animation length',
+				'type': 'text',
+			},
 		]
 	},
 	{

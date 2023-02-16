@@ -8,7 +8,7 @@
 	background-size: calc(50% + 5px) 100%;
 	background-repeat: no-repeat;
 	position: relative;
-	animation: flipX 1s infinite linear;
+	animation: flipX var(--loader-infinite-length) infinite linear;
 
 	&:before {
 		content: "";
@@ -20,7 +20,7 @@
 		border-radius: 50%;
 		background: var(--loader-infinite-fg);
 		transform-origin: -14px 50%;
-		animation: rotate 0.5s infinite linear;
+		animation: rotate calc(var(--loader-infinite-length) / 2) infinite linear;
 	}
 
 	@keyframes flipX {

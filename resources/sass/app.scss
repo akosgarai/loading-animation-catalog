@@ -6,8 +6,11 @@
 	 --cover-bg: #ff0000;
 	 --dark-text: #2a2935;
 
+	 /* loaders */
 	 --loader-infinite-bg: #bde9df;
 	 --loader-infinite-fg: #015477;
+	 --loader-infinite-length: 1s;
+
 	 --loader-tesseract-occ: #65b8db;
 	 --loader-tesseract-ocb: #015477;
 	 --loader-tesseract-ocsc: #01547780;
@@ -16,6 +19,7 @@
 	 --loader-tesseract-length: 4s;
 	 --loader-tesseract-oop: 0.5;
 	 --loader-tesseract-iop: 0.25;
+
 	 --loader-ripples-bc: #015477;
 	 --loader-clock-cbc: #015477;
 	 --loader-clock-pbc: #3DFF00;
