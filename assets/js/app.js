@@ -17,14 +17,29 @@ var pageContent = [
 				'type': 'color',
 			},
 			{
-				'variable': '--loader-tesseract-ocsc',
-				'label': 'Outer cube shadow',
-				'type': 'color',
-			},
-			{
 				'variable': '--loader-tesseract-icc',
 				'label': 'Inner cube color',
 				'type': 'color',
+			},
+			{
+				'variable': '--loader-tesseract-ocw',
+				'label': 'Outer cube width',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-tesseract-length',
+				'label': 'Animation length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-tesseract-oop',
+				'label': 'Outer cube opacity',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-tesseract-iop',
+				'label': 'Inner cube opacity',
+				'type': 'text',
 			},
 		]
 	},

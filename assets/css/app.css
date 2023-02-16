@@ -9,8 +9,12 @@
   --loader-infinite-fg: #015477;
   --loader-tesseract-occ: #65b8db;
   --loader-tesseract-ocb: #015477;
-  --loader-tesseract-ocsc: #015477;
+  --loader-tesseract-ocsc: #01547780;
   --loader-tesseract-icc: #ffffff;
+  --loader-tesseract-ocw: 200px;
+  --loader-tesseract-length: 4s;
+  --loader-tesseract-oop: 0.5;
+  --loader-tesseract-iop: 0.25;
   --loader-ripples-bc: #015477;
   --loader-clock-cbc: #015477;
   --loader-clock-pbc: #3DFF00;
@@ -130,66 +134,62 @@ body {
           padding-top: calc(var(--baseline) * 4); }
           .cover .book .paper .page-content .loader-container .tesseract {
             position: relative;
-            width: 200px;
-            height: 200px; }
+            width: var(--loader-tesseract-ocw);
+            height: var(--loader-tesseract-ocw); }
             .cover .book .paper .page-content .loader-container .tesseract .shape {
-              width: 100px;
-              height: 100px; }
+              width: calc(var(--loader-tesseract-ocw) / 2);
+              height: calc(var(--loader-tesseract-ocw) / 2); }
               .cover .book .paper .page-content .loader-container .tesseract .shape .cube {
                 position: relative;
                 transition: transform .5s;
                 transform-style: preserve-3d; }
                 .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer {
-                  width: 200px;
-                  height: 200px;
+                  width: var(--loader-tesseract-ocw);
+                  height: var(--loader-tesseract-ocw);
                   transform-style: preserve-3d;
-                  animation: spin 4s infinite cubic-bezier(0.67, 0.03, 0.31, 0.98); }
+                  animation: spin var(--loader-tesseract-length) infinite cubic-bezier(0.67, 0.03, 0.31, 0.98); }
                   .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer .side {
                     position: absolute;
                     width: 100%;
                     height: 100%;
-                    font-size: 30px;
-                    line-height: 100px;
-                    text-align: center;
-                    opacity: .9;
                     transition: all .2s linear;
                     border: 1px solid var(--loader-tesseract-ocb);
                     background-color: var(--loader-tesseract-occ);
-                    opacity: 0.5;
-                    box-shadow: inset 0 0 100% 0 var(--loader-tesseract-ocsc) 80;
+                    opacity: var(--loader-tesseract-oop);
+                    box-shadow: inset 0 0 100% 0 var(--loader-tesseract-ocsc);
                     box-sizing: border-box; }
                     .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer .side.left {
-                      transform: translateX(-100px) rotateY(-90deg); }
+                      transform: translateX(calc(var(--loader-tesseract-ocw) / -2)) rotateY(-90deg); }
                     .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer .side.right {
-                      transform: translateX(100px) rotateY(90deg); }
+                      transform: translateX(calc(var(--loader-tesseract-ocw) / 2)) rotateY(90deg); }
                     .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer .side.top {
-                      transform: translateY(-100px) rotateX(90deg); }
+                      transform: translateY(calc(var(--loader-tesseract-ocw) / -2)) rotateX(90deg); }
                     .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer .side.bottom {
-                      transform: translateY(100px) rotateX(-90deg); }
+                      transform: translateY(calc(var(--loader-tesseract-ocw) / 2)) rotateX(-90deg); }
                     .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer .side.front {
-                      transform: translateZ(100px); }
+                      transform: translateZ(calc(var(--loader-tesseract-ocw) / 2)); }
                     .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer .side.back {
-                      transform: translateZ(-100px) rotateY(180deg); }
+                      transform: translateZ(calc(var(--loader-tesseract-ocw) / -2)) rotateY(180deg); }
                   .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer > .cube {
-                    width: 100px;
-                    height: 100px;
-                    transform: translateX(50px) translateY(50px);
-                    animation: spin-inner 4s infinite cubic-bezier(0.67, 0.03, 0.31, 0.98); }
+                    width: calc(var(--loader-tesseract-ocw) / 2);
+                    height: calc(var(--loader-tesseract-ocw) / 2);
+                    transform: translateX(calc(var(--loader-tesseract-ocw) / 4)) translateY(calc(var(--loader-tesseract-ocw) / 4));
+                    animation: spin-inner var(--loader-tesseract-length) infinite cubic-bezier(0.67, 0.03, 0.31, 0.98); }
                     .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer > .cube .side {
                       background-color: var(--loader-tesseract-icc);
-                      opacity: 0.25; }
+                      opacity: var(--loader-tesseract-iop); }
                       .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer > .cube .side.left {
-                        transform: translateX(-50px) rotateY(-90deg); }
+                        transform: translateX(calc(var(--loader-tesseract-ocw) / -4)) rotateY(-90deg); }
                       .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer > .cube .side.right {
-                        transform: translateX(50px) rotateY(90deg); }
+                        transform: translateX(calc(var(--loader-tesseract-ocw) / 4)) rotateY(90deg); }
                       .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer > .cube .side.top {
-                        transform: translateY(-50px) rotateX(90deg); }
+                        transform: translateY(calc(var(--loader-tesseract-ocw) / -4)) rotateX(90deg); }
                       .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer > .cube .side.bottom {
-                        transform: translateY(50px) rotateX(-90deg); }
+                        transform: translateY(calc(var(--loader-tesseract-ocw) / 4)) rotateX(-90deg); }
                       .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer > .cube .side.front {
-                        transform: translateZ(50px); }
+                        transform: translateZ(calc(var(--loader-tesseract-ocw) / 4)); }
                       .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer > .cube .side.back {
-                        transform: translateZ(-50px) rotateY(180deg); }
+                        transform: translateZ(calc(var(--loader-tesseract-ocw) / -4)) rotateY(180deg); }
 
 @keyframes spin {
   0% {
@@ -203,13 +203,13 @@ body {
 
 @keyframes spin-inner {
   0% {
-    transform: translateX(50px) translateY(50px) rotateY(0deg) rotateX(90deg); }
+    transform: translateX(calc(var(--loader-tesseract-ocw) / 4)) translateY(calc(var(--loader-tesseract-ocw) / 4)) rotateY(0deg) rotateX(90deg); }
   33.333% {
-    transform: translateX(50px) translateY(50px) rotateY(90deg) rotateX(90deg); }
+    transform: translateX(calc(var(--loader-tesseract-ocw) / 4)) translateY(calc(var(--loader-tesseract-ocw) / 4)) rotateY(90deg) rotateX(90deg); }
   66.666% {
-    transform: translateX(50px) translateY(50px) rotateY(-90deg) rotateX(90deg); }
+    transform: translateX(calc(var(--loader-tesseract-ocw) / 4)) translateY(calc(var(--loader-tesseract-ocw) / 4)) rotateY(-90deg) rotateX(90deg); }
   100% {
-    transform: translateX(50px) translateY(50px) rotateY(0deg) rotateX(90deg); } }
+    transform: translateX(calc(var(--loader-tesseract-ocw) / 4)) translateY(calc(var(--loader-tesseract-ocw) / 4)) rotateY(0deg) rotateX(90deg); } }
           .cover .book .paper .page-content .loader-container .infinite {
             width: 86px;
             height: 50px;
