@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "css": "node-sass resources/sass/app.scss > assets/css/app.css",
-    "css.loader": "for filename in resources/sass/loader/*.scss; do node-sass --output-style expanded \"${filename}\" -o assets/css; done"
+    "css.loader": "for filename in resources/sass/loader/*.scss; do node-sass --output-style expanded \"${filename}\" -o assets/css/loader; done"
   },
   "author": "",
   "license": "ISC",
