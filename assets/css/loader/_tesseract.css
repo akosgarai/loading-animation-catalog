@@ -30,7 +30,7 @@
   border: 1px solid var(--loader-tesseract-ocb);
   background-color: var(--loader-tesseract-occ);
   opacity: var(--loader-tesseract-oop);
-  box-shadow: inset 0 0 100% 0 var(--loader-tesseract-ocsc);
+  box-shadow: inset 0 0 100% 0 #01547780;
   box-sizing: border-box;
 }
 

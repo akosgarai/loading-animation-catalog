@@ -213,6 +213,9 @@ function buildFlipbook() {
 		pre.textContent = htmlText;
 		paper.querySelector('.front .page-content .tab-contents .html').innerHTML = '';
 		paper.querySelector('.front .page-content .tab-contents .html').appendChild(pre);
+		// css template
+		const url = cssFilePathFromTemplateName(pageConfig.template);
+		loadCssFileAsText(url, paper.querySelector('.front .page-content .tab-contents .css'));
 		if (typeof pageConfig.settings == 'undefined') {
 			return;
 		}
@@ -280,6 +283,44 @@ function showPageContent(element, screenName) {
 		screen.classList.add('hidden');
 	});
 	pageNode.querySelector('.tab-contents div.' + screenName).classList.remove('hidden');
+}
+
+function loadCssFileAsText(url, toElement) {
+	var request = new XMLHttpRequest();
+	request.open('GET', url, true);
+	request.send(null);
+	request.onreadystatechange = function () {
+		if (request.readyState === 4 && request.status === 200) {
+			var type = request.getResponseHeader('Content-Type');
+			if (type.indexOf("text") !== 1) {
+				toElement.innerHTML = '';
+				const pre = document.createElement('pre');
+				pre.attributes['data-original'] = request.responseText;
+				pre.textContent = replaceCssVariablesInText(request.responseText);
+				toElement.appendChild(pre);
+			}
+		}
+	}
+}
+
+function replaceCssVariablesInText(text) {
+	// loop on pageContent and replace all css variables with their values
+	pageContent.forEach((pageConfig) => {
+		if (typeof pageConfig.settings == 'undefined') {
+			return;
+		}
+		// loop on settings
+		pageConfig.settings.forEach((setting) => {
+			const textToReplace = 'var(' + setting.variable + ')';
+			const currentValue = getComputedStyle(document.documentElement).getPropertyValue(setting.variable);
+			text = text.replaceAll(textToReplace, currentValue);
+		});
+	});
+	return text;
+}
+
+function cssFilePathFromTemplateName(templateName) {
+	return 'assets/css/loader/_' + templateName + '.css';
 }
 
 // Onload function. It builds the flipbook.

@@ -11,7 +11,6 @@
   --loader-infinite-length: 1s;
   --loader-tesseract-occ: #65b8db;
   --loader-tesseract-ocb: #015477;
-  --loader-tesseract-ocsc: #01547780;
   --loader-tesseract-icc: #ffffff;
   --loader-tesseract-ocw: 200px;
   --loader-tesseract-length: 4s;
@@ -167,7 +166,7 @@ body {
                     border: 1px solid var(--loader-tesseract-ocb);
                     background-color: var(--loader-tesseract-occ);
                     opacity: var(--loader-tesseract-oop);
-                    box-shadow: inset 0 0 100% 0 var(--loader-tesseract-ocsc);
+                    box-shadow: inset 0 0 100% 0 #01547780;
                     box-sizing: border-box; }
                     .cover .book .paper .page-content .loader-container .tesseract .shape .cube.outer .side.left {
                       transform: translateX(calc(var(--loader-tesseract-ocw) / -2)) rotateY(-90deg); }
@@ -420,3 +419,10 @@ body {
           tab-size: 2;
           padding: 0 calc(var(--baseline) * 2);
           background-color: var(--body-bg); }
+        .cover .book .paper .page-content .css {
+          text-align: left;
+          tab-size: 2;
+          padding: 0 calc(var(--baseline) * 2);
+          background-color: var(--body-bg);
+          overflow: scroll;
+          max-height: calc(var(--baseline) * 25); }

@@ -13,7 +13,6 @@
 
 	 --loader-tesseract-occ: #65b8db;
 	 --loader-tesseract-ocb: #015477;
-	 --loader-tesseract-ocsc: #01547780;
 	 --loader-tesseract-icc: #ffffff;
 	 --loader-tesseract-ocw: 200px;
 	 --loader-tesseract-length: 4s;
@@ -216,6 +215,14 @@
 					tab-size: 2;
 					padding: 0 calc(var(--baseline) * 2);
 					background-color: var(--body-bg);
+				}
+				.css {
+					text-align: left;
+					tab-size: 2;
+					padding: 0 calc(var(--baseline) * 2);
+					background-color: var(--body-bg);
+					overflow: scroll;
+					max-height: calc(var(--baseline) * 25);
 				}
 			}
 		}
