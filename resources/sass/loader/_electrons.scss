@@ -1,30 +1,44 @@
 .electrons {
-	transform: rotateZ(45deg);
-	perspective: 1000px;
-	border-radius: 50%;
-	width: 48px;
-	height: 48px;
-	color: var(--loader-electron-one);
+	position: relative;
+	width: var(--loader-electron-size);
+	height: var(--loader-electron-size);
 
-	&:before,
-	&:after {
-		content: '';
-		display: block;
+	.electron-pair {
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: inherit;
-		height: inherit;
+		perspective: 1000px;
 		border-radius: 50%;
-		transform: rotateX(70deg);
-		animation: 1s electrons linear infinite;
-	}
-	&:after {
-		color: var(--loader-electron-two);
-		transform: rotateY(70deg);
-		animation-delay: .4s;
-	}
+		width: var(--loader-electron-size);
+		height: var(--loader-electron-size);
+		color: var(--loader-electron-one);
 
+		&:before,
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: inherit;
+			height: inherit;
+			border-radius: 50%;
+			transform: rotateX(70deg);
+			animation: var(--loader-electron-length) electrons linear infinite;
+		}
+		&:after {
+			color: var(--loader-electron-two);
+			transform: rotateY(70deg);
+			animation-delay: calc(var(--loader-electron-length) * 0.4s);
+		}
+		&:nth-child(1) {
+			transform: rotateZ(45deg);
+		}
+		&:nth-child(2) {
+			transform: rotateZ(105deg);
+		}
+		&:nth-child(3) {
+			transform: rotateZ(250deg);
+		}
+	}
 	@keyframes electrons {
 		0%,
 		100% {

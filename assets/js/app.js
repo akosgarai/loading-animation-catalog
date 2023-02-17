@@ -144,6 +144,16 @@ var pageContent = [
 				'label': 'Electron two',
 				'type': 'color',
 			},
+			{
+				'variable': '--loader-electron-length',
+				'label': 'Animation length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-electron-size',
+				'label': 'Size',
+				'type': 'text',
+			},
 		]
 	},
 ];
