@@ -17,14 +17,29 @@ var pageContent = [
 				'type': 'color',
 			},
 			{
-				'variable': '--loader-tesseract-ocsc',
-				'label': 'Outer cube shadow',
-				'type': 'color',
-			},
-			{
 				'variable': '--loader-tesseract-icc',
 				'label': 'Inner cube color',
 				'type': 'color',
+			},
+			{
+				'variable': '--loader-tesseract-ocw',
+				'label': 'Outer cube width',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-tesseract-length',
+				'label': 'Animation length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-tesseract-oop',
+				'label': 'Outer cube opacity',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-tesseract-iop',
+				'label': 'Inner cube opacity',
+				'type': 'text',
 			},
 		]
 	},
@@ -43,6 +58,11 @@ var pageContent = [
 				'label': 'Foreground color',
 				'type': 'color',
 			},
+			{
+				'variable': '--loader-infinite-length',
+				'label': 'Animation length',
+				'type': 'text',
+			},
 		]
 	},
 	{
@@ -54,6 +74,21 @@ var pageContent = [
 				'variable': '--loader-ripples-bc',
 				'label': 'Border color',
 				'type': 'color',
+			},
+			{
+				'variable': '--loader-ripples-length',
+				'label': 'Animation length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-ripples-size',
+				'label': 'Size',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-ripples-width',
+				'label': 'Wave width',
+				'type': 'text',
 			},
 		]
 	},
@@ -72,6 +107,26 @@ var pageContent = [
 				'label': 'Pointer color',
 				'type': 'color',
 			},
+			{
+				'variable': '--loader-clock-minute-length',
+				'label': 'Minute length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-clock-hour-length',
+				'label': 'Hour length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-clock-size',
+				'label': 'Size',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-clock-bsize',
+				'label': 'Border size',
+				'type': 'text',
+			},
 		]
 	},
 	{
@@ -88,6 +143,16 @@ var pageContent = [
 				'variable': '--loader-electron-two',
 				'label': 'Electron two',
 				'type': 'color',
+			},
+			{
+				'variable': '--loader-electron-length',
+				'label': 'Animation length',
+				'type': 'text',
+			},
+			{
+				'variable': '--loader-electron-size',
+				'label': 'Size',
+				'type': 'text',
 			},
 		]
 	},
@@ -130,10 +195,30 @@ function buildFlipbook() {
 	// and add the setting form to the front page when it is available.
 	const papers = document.querySelectorAll('.book .paper');
 	pageContent.forEach((pageConfig, index) => {
+		// extract the html from the template and display it as string in the html tab.
+		const page = document.getElementById(pageConfig.template + '-template');
+		const paper = papers[index+2];
+		const pre = document.createElement('pre');
+		let htmlText = page.content.firstElementChild.cloneNode(true).outerHTML;
+		const lines = htmlText.split('\n');
+		const numberOfTabsInTheLastLine = lines[lines.length - 1].split('\t').length - 1;
+		// remove numberOfTabsInTheLastLine tabs from the beginning of each line that starts with a tab.
+		htmlText = lines.map(line => {
+			// if the line starts with numberOfTabsInTheLastLine tabs, remove them.
+			if (line.startsWith('\t'.repeat(numberOfTabsInTheLastLine))) {
+				return line.substring(numberOfTabsInTheLastLine);
+			}
+			return line;
+		}).join('\n');
+		pre.textContent = htmlText;
+		paper.querySelector('.front .page-content .tab-contents .html').innerHTML = '';
+		paper.querySelector('.front .page-content .tab-contents .html').appendChild(pre);
+		// css template
+		const url = cssFilePathFromTemplateName(pageConfig.template);
+		loadCssFileAsText(url, paper.querySelector('.front .page-content .tab-contents .css'));
 		if (typeof pageConfig.settings == 'undefined') {
 			return;
 		}
-		const paper = papers[index+2];
 		paper.querySelector('.hidden').classList.remove('hidden');
 		pageConfig.settings.forEach((setting) => {
 			const settingsItemTemplate = document.getElementById('settings-item-template').content.firstElementChild.cloneNode(true);
@@ -183,6 +268,65 @@ function flip(elementIndex) {
 			firstNotFlipped.classList.add("first-not-flipped");
 		}
 	}
+}
+
+// Tab navigation. The element is the tab element, the screen name is the name of the screen to show.
+// First remove the active-tab class from all tabs and hide all screens.
+// Then add the active-tab class to the clicked tab and show the screen with the screen name.
+function showPageContent(element, screenName) {
+	element.parentElement.querySelectorAll('div').forEach((child) => {
+		child.classList.remove('active-tab');
+	});
+	element.classList.add('active-tab');
+	const pageNode = element.parentElement.parentElement.parentElement;
+	pageNode.querySelectorAll('.tab-contents > div').forEach((screen) => {
+		screen.classList.add('hidden');
+	});
+	pageNode.querySelector('.tab-contents div.' + screenName).classList.remove('hidden');
+}
+
+function loadCssFileAsText(url, toElement) {
+	var request = new XMLHttpRequest();
+	request.open('GET', url, true);
+	request.send(null);
+	request.onreadystatechange = function () {
+		if (request.readyState === 4 && request.status === 200) {
+			var type = request.getResponseHeader('Content-Type');
+			if (type.indexOf("text") !== 1) {
+				toElement.innerHTML = '';
+				const pre = document.createElement('pre');
+				pre.setAttribute('data-original', request.responseText);
+				pre.textContent = replaceCssVariablesInText(request.responseText);
+				toElement.appendChild(pre);
+			}
+		}
+	}
+}
+
+function replaceCssVariablesInText(text) {
+	// loop on pageContent and replace all css variables with their values
+	pageContent.forEach((pageConfig) => {
+		if (typeof pageConfig.settings == 'undefined') {
+			return;
+		}
+		// loop on settings
+		pageConfig.settings.forEach((setting) => {
+			const textToReplace = 'var(' + setting.variable + ')';
+			const currentValue = getComputedStyle(document.documentElement).getPropertyValue(setting.variable);
+			text = text.replaceAll(textToReplace, currentValue);
+		});
+	});
+	return text;
+}
+
+function cssFilePathFromTemplateName(templateName) {
+	return 'assets/css/loader/_' + templateName + '.css';
+}
+
+function settingVariableChanged(element) {
+	document.querySelector(':root').style.setProperty(element.getAttribute('data-variable'), element.value);
+	const cssCode = element.parentElement.parentElement.parentElement.parentElement.querySelector('.css pre');
+	cssCode.textContent = replaceCssVariablesInText(cssCode.getAttribute('data-original'));
 }
 
 // Onload function. It builds the flipbook.

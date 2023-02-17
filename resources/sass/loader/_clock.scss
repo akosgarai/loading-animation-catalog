@@ -1,7 +1,7 @@
 .clock {
-	width: 96px;
-	height: 96px;
-	border: 3px solid var(--loader-clock-cbc);
+	width: var(--loader-clock-size);
+	height: var(--loader-clock-size);
+	border: var(--loader-clock-bsize) solid var(--loader-clock-cbc);
 	border-radius: 50%;
 	display: inline-block;
 	position: relative;
@@ -14,10 +14,10 @@
 		transform: translate(-50%, -50%);
 
 		div {
-			animation: clock 1s linear infinite;
+			animation: clock var(--loader-clock-minute-length) linear infinite;
 			position:relative;
 
-			&::after {
+			&::before {
 				content: '';
 				box-sizing: border-box;
 				position: absolute;
@@ -25,7 +25,7 @@
 				top: 0;
 				background: var(--loader-clock-pbc);
 				width: 2px;
-				height: 47px;
+				height: calc(var(--loader-clock-size) / 2 - 1px);
 				transform: translateX(-50%);
 			}
 		}
@@ -37,10 +37,10 @@
 		transform: translate(-50%, -50%);
 
 		div {
-			animation: clock 3s linear infinite;
+			animation: clock var(--loader-clock-hour-length) linear infinite;
 			position:relative;
 
-			&::after {
+			&:after {
 				content: '';
 				box-sizing: border-box;
 				position: absolute;
@@ -48,7 +48,7 @@
 				top: 0;
 				background: var(--loader-clock-pbc);
 				width: 4px;
-				height: 23px;
+				height: calc(var(--loader-clock-size) / 4 - 1px);
 				transform: translateX(-50%);
 			}
 		}
