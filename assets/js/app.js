@@ -320,7 +320,7 @@ function replaceCssVariablesInText(text) {
 }
 
 function cssFilePathFromTemplateName(templateName) {
-	return 'assets/css/loader/_' + templateName + '.css';
+	return 'assets/css/loader/' + templateName + '.css';
 }
 
 function settingVariableChanged(element) {
