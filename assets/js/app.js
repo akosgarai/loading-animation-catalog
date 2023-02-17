@@ -295,7 +295,7 @@ function loadCssFileAsText(url, toElement) {
 			if (type.indexOf("text") !== 1) {
 				toElement.innerHTML = '';
 				const pre = document.createElement('pre');
-				pre.attributes['data-original'] = request.responseText;
+				pre.setAttribute('data-original', request.responseText);
 				pre.textContent = replaceCssVariablesInText(request.responseText);
 				toElement.appendChild(pre);
 			}
@@ -321,6 +321,12 @@ function replaceCssVariablesInText(text) {
 
 function cssFilePathFromTemplateName(templateName) {
 	return 'assets/css/loader/_' + templateName + '.css';
+}
+
+function settingVariableChanged(element) {
+	document.querySelector(':root').style.setProperty(element.getAttribute('data-variable'), element.value);
+	const cssCode = element.parentElement.parentElement.parentElement.parentElement.querySelector('.css pre');
+	cssCode.textContent = replaceCssVariablesInText(cssCode.getAttribute('data-original'));
 }
 
 // Onload function. It builds the flipbook.
