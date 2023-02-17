@@ -1,0 +1,57 @@
+.ripples {
+  display: inline-block;
+  position: relative;
+  width: var(--loader-ripples-size);
+  height: var(--loader-ripples-size);
+}
+
+.ripples div {
+  position: absolute;
+  border: var(--loader-ripples-width) solid var(--loader-ripples-bc);
+  opacity: 1;
+  border-radius: 50%;
+  animation: ripples var(--loader-ripples-length) cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.ripples div:nth-child(2) {
+  animation-delay: calc(var(--loader-ripples-length) / -4);
+}
+
+.ripples div:nth-child(3) {
+  animation-delay: calc(var(--loader-ripples-length) / -2);
+}
+
+.ripples div:nth-child(4) {
+  animation-delay: calc(3 * var(--loader-ripples-length) / -4);
+}
+
+@keyframes ripples {
+  0% {
+    top: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
+    left: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
+    left: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
+    left: calc(var(--loader-ripples-size) / 2 - var(--loader-ripples-width) / 2);
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: calc(var(--loader-ripples-size) - var(--loader-ripples-width) * 4);
+    height: calc(var(--loader-ripples-size) - var(--loader-ripples-width) * 4);
+    opacity: 0;
+  }
+}
