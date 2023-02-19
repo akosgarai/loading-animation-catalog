@@ -213,6 +213,7 @@ function buildFlipbook() {
 		pre.textContent = htmlText;
 		paper.querySelector('.front .page-content .tab-contents .html').innerHTML = '';
 		paper.querySelector('.front .page-content .tab-contents .html').appendChild(pre);
+		paper.querySelector('.front .page-content .tab-contents .html').appendChild(document.getElementById('copy-to-clipboard-template').content.firstElementChild.cloneNode(true));
 		// css template
 		const url = cssFilePathFromTemplateName(pageConfig.template);
 		loadCssFileAsText(url, paper.querySelector('.front .page-content .tab-contents .css'));
@@ -298,6 +299,7 @@ function loadCssFileAsText(url, toElement) {
 				pre.setAttribute('data-original', request.responseText);
 				pre.textContent = replaceCssVariablesInText(request.responseText);
 				toElement.appendChild(pre);
+				toElement.appendChild(document.getElementById('copy-to-clipboard-template').content.firstElementChild.cloneNode(true))
 			}
 		}
 	}
@@ -327,6 +329,17 @@ function settingVariableChanged(element) {
 	document.querySelector(':root').style.setProperty(element.getAttribute('data-variable'), element.value);
 	const cssCode = element.parentElement.parentElement.parentElement.parentElement.querySelector('.css pre');
 	cssCode.textContent = replaceCssVariablesInText(cssCode.getAttribute('data-original'));
+}
+
+function copyToClipboard(element) {
+	const pre = element.parentElement.querySelector('pre');
+	const text = pre.textContent;
+	const textArea = document.createElement("textarea");
+	textArea.value = text;
+	document.body.appendChild(textArea);
+	textArea.select();
+	document.execCommand("Copy");
+	textArea.remove();
 }
 
 // Onload function. It builds the flipbook.

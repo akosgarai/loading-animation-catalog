@@ -215,6 +215,7 @@
 					tab-size: 2;
 					padding: 0 calc(var(--baseline) * 2);
 					background-color: var(--body-bg);
+					position: relative;
 				}
 				.css {
 					text-align: left;
@@ -223,6 +224,19 @@
 					background-color: var(--body-bg);
 					overflow: scroll;
 					max-height: calc(var(--baseline) * 25);
+					position: relative;
+				}
+				.copy-to-clipboard {
+					position: absolute;
+					top: var(--baseline);
+					right: var(--baseline);
+					border-radius: 5px;
+					padding: 0.3rem;
+
+					&:hover {
+						background-color: var(--body-bg);
+						cursor: pointer;
+					}
 				}
 			}
 		}
