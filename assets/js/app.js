@@ -331,6 +331,17 @@ function settingVariableChanged(element) {
 	cssCode.textContent = replaceCssVariablesInText(cssCode.getAttribute('data-original'));
 }
 
+function copyToClipboard(element) {
+	const pre = element.parentElement.querySelector('pre');
+	const text = pre.textContent;
+	const textArea = document.createElement("textarea");
+	textArea.value = text;
+	document.body.appendChild(textArea);
+	textArea.select();
+	document.execCommand("Copy");
+	textArea.remove();
+}
+
 // Onload function. It builds the flipbook.
 window.onload = function() {
 	buildFlipbook();
